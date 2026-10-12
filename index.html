@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#ffffff">
+    <title>Ahmet Bekisoglu — Arzt & Global-Health-Forscher</title>
+    <meta name="description" content="Ahmet Bekisoglu — Arzt und Forscher an der Schnittstelle von globaler Gesundheit und Sicherheitspolitik. Vorträge, Keynotes und Seminare.">
+    <meta property="og:title" content="Ahmet Bekisoglu — Arzt & Global-Health-Forscher">
+    <meta property="og:description" content="Arzt und Forscher an der Schnittstelle von globaler Gesundheit und Sicherheitspolitik.">
+    <meta property="og:type" content="website">
+    <!-- VORSCHAUBILD: nach dem Go-live die absolute URL eintragen, z. B. https://ahmetbekisoglu.de/og-image.jpg -->
+    <meta property="og:image" content="og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ahmet Bekisoglu",
+        "jobTitle": "Arzt und Forscher (Global Health)",
+        "email": "mailto:mail@platzhalter.de",
+        "sameAs": ["https://www.linkedin.com/in/ahmet-bekisoglu-319627246/", "https://scholar.google.com/citations?user=H_onjfkAAAAJ", "https://youtube.com/studyrunner"],
+        "alumniOf": ["London School of Hygiene & Tropical Medicine", "Universität Hamburg", "Universität zu Köln"],
+        "knowsAbout": ["Global Health Policy", "Health-Security Nexus", "Gesundheitssysteme in Konfliktzonen"]
+    }
+    </script>
+    <style>
+        /* ============ Design-Tokens ============ */
+        :root {
+            --bg: #ffffff;
+            --ink: #111111;
+            --ink2: #4d4d4d;
+            --muted: #737373;
+            --line: #ebebeb;
+            --accent: #0f766e; /* Petrol, nur für die Themen-Symbole */
+            --blue: #1e3a8a;   /* Dunkelblau: Verfügbarkeit und Symbole der Sprunglinks */
+            /* Calibri, wo vorhanden (Windows / Office); Carlito ist der metrisch identische freie Ersatz */
+            --font: Calibri, Carlito, 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        [hidden] { display: none !important; } /* ausgeblendete Einträge/Reiter wirklich verstecken, auch bei Raster-Layout */
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--font);
+            font-size: 17px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background: var(--ink); color: #fff; }
+
+        h1, h2, p { margin: 0; }
+        ul { list-style: none; margin: 0; padding: 0; }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: #cccccc;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: text-decoration-color .15s;
+        }
+        a:hover { text-decoration-color: currentColor; }
+        :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+
+        /* ============ Raster: links Foto und Rubriken, rechts der Inhalt ============ */
+        .page { max-width: 760px; margin: 0 auto; padding: clamp(56px, 13vh, 128px) 24px 40px; }
+        .row { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: 40px; }
+        main .row { margin-top: 60px; }
+        h2 { font-size: inherit; line-height: inherit; font-weight: 400; color: var(--muted); scroll-margin-top: 40px; }
+        /* Sprunglinks innerhalb der Seite („siehe oben“, „Kontaktmöglichkeiten“) sanft scrollen */
+        @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+        /* ============ Kopf ============ */
+        .head { align-items: center; }
+        .avatar { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; display: block; background: #f2f2f2; }
+        h1 { font-size: 1.5rem; line-height: 1.25; font-weight: 700; letter-spacing: -0.005em; }
+        .role { color: var(--muted); margin-top: 2px; }
+        /* Verfügbarkeit in Dunkelblau mit sanft pulsierendem Punkt */
+        .avail { display: flex; align-items: center; gap: 9px; margin-top: 6px; font-size: .92rem; color: var(--blue); }
+        .pulse { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex: none; }
+        .pulse::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--blue); opacity: 0; animation: pulse 2.4s ease-out infinite; }
+        @keyframes pulse { 0% { transform: scale(.6); opacity: .8; } 70%, 100% { transform: scale(2); opacity: 0; } }
+        @media (prefers-reduced-motion: reduce) { .pulse::after { animation: none; } }
+        /* Sprunglinks zu den Abschnitten, dezent in Petrol */
+        .jump { display: flex; flex-wrap: wrap; gap: 2px 18px; margin-top: 8px; font-size: .95rem; }
+        .jump a { color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        /* kleine Liniensymbole vor den Sprunglinks, in Dunkelblau */
+        .n-icon { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--blue); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .jump a:hover { text-decoration: underline; }
+
+        /* Blocksatz mit Silbentrennung */
+        .about { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+        .about p + p { margin-top: .8em; } /* Absätze mit etwas Luft dazwischen */
+
+        .topics { display: grid; gap: 14px; }
+        /* Stichworte unter dem Thema, getrennt durch Mittelpunkte; Stichworte brechen nie in sich um */
+        /* Themen: kleines Symbol in Petrol vor dem Titel, Stichworte bündig darunter */
+        .topics.with-icons li { display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 12px; }
+        .t-icon { width: 20px; height: 20px; margin-top: 3.5px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .t-icon { color: var(--accent); }
+        .tags { display: block; color: var(--muted); font-size: .94em; }
+        .tags span { white-space: nowrap; }
+        .tags span:not(:last-child)::after { content: "\00a0·"; }
+
+        /* ============ Zweispaltige Listen: Kurzvita und Kontakt ============ */
+        .list { display: grid; gap: 12px; }
+        .list li { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); column-gap: 1.25em; overflow-wrap: break-word; }
+        .list .key { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .list .sub { display: block; color: var(--muted); }
+        .links { display: flex; flex-wrap: wrap; gap: 2px 20px; }
+        /* kleine Logos vor LinkedIn, Google Scholar und YouTube */
+        .links a { display: inline-flex; align-items: center; gap: 7px; }
+        .s-icon { width: 16px; height: 16px; flex: none; }
+        /* Cal.com-Schriftzug (Simple Icons, CC0) – breites Logo, daher eigene Maße */
+        .cal-logo { width: 53px; height: 12px; flex: none; }
+        .links a.cal { flex-wrap: wrap; row-gap: 2px; } /* wenn es eng wird: Logo über dem Text statt Umbruch im Text */
+
+        /* ============ Projekte: kleines Logo vor dem Titel, Text im Blocksatz ============ */
+        .projects { display: grid; gap: 28px; }
+        h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; font-size: inherit; line-height: inherit; font-weight: 600; }
+        .p-icon { width: 20px; height: 20px; flex: none; }
+        .projects p { color: var(--ink2); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+        /* ============ Publikationen: zwei Reiter, aktiver Reiter mit Petrol-Strich ============ */
+        .tablist { display: flex; gap: 24px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+        .tablist button { font: inherit; color: var(--muted); background: none; border: 0; border-bottom: 2px solid transparent; padding: 0 0 8px; margin: 0 0 -1px; cursor: pointer; }
+        .tablist button:hover { color: var(--ink); }
+        .tablist button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+        .pubs li.group { display: block; margin-top: 8px; color: var(--muted); font-size: .85em; }
+        .pubs .me { color: var(--ink); }
+        .pubs .sub { hyphens: manual; -webkit-hyphens: manual; } /* Namen und Quellen nie trennen */
+        /* „Weitere anzeigen“ – bündig mit den Titeln */
+        .more { font: inherit; color: var(--accent); background: none; border: 0; padding: 0; margin: 14px 0 0 7.75em; cursor: pointer; }
+        .more::before { content: "+\00a0"; }
+        .more[aria-expanded="true"]::before { content: "–\00a0"; }
+        .more:hover { text-decoration: underline; }
+
+        /* ============ Netzwerke & Förderer: Logos in Farbe, ruhiges Raster ohne Rahmen ============ */
+        .logos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 16px; }
+        .logos a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 80px; text-decoration: none; }
+        .logos img { height: 46px; width: auto; max-width: 100%; object-fit: contain; opacity: .85; transition: opacity .15s; }
+        .logos img.sq { height: 58px; }
+        .logos img.tall { height: 54px; }
+        .logos .captioned img { height: 40px; }
+        .logos .span2 { grid-column: span 2; }
+        .logos img.wide, .logos .captioned img.wide { width: auto; height: 26px; }
+        .logos a:hover img { opacity: 1; }
+        .logos small { font-size: .72rem; line-height: 1.25; color: var(--muted); text-align: center; }
+        .logos small.strong { font-weight: 700; color: var(--ink); }
+
+        /* ============ Footer ============ */
+        footer {
+            margin-top: 112px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px;
+            font-size: .9rem; color: var(--muted);
+        }
+        footer nav { display: flex; gap: 20px; }
+        footer a { text-decoration: none; }
+        footer a:hover { color: var(--ink); text-decoration: underline; }
+
+        /* ============ Mobil ============ */
+        @media (max-width: 700px) {
+            .page { padding-left: 20px; padding-right: 20px; }
+            .row { grid-template-columns: minmax(0, 1fr); }
+            main .row { margin-top: 44px; }
+            h2 { margin-bottom: 8px; }
+            .head { grid-template-columns: 80px minmax(0, 1fr); column-gap: 20px; }
+            /* Handy: Foto + Name/Titel oben, Verfügbarkeit und Sprunglinks darunter in voller Breite */
+            .head { grid-template-areas: "pic name" "pic role" "avail avail" "nav nav"; }
+            .head > div { display: contents; }
+            .head .avatar { grid-area: pic; }
+            .head h1 { grid-area: name; align-self: end; }
+            .head .role { grid-area: role; align-self: start; }
+            .head .avail { grid-area: avail; margin-top: 18px; }
+            .head .jump { grid-area: nav; }
+            .avatar { width: 80px; height: 80px; }
+            h1 { font-size: 1.35rem; }
+            .list li { grid-template-columns: 6em minmax(0, 1fr); column-gap: 1em; }
+            .logos { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 12px; }
+            .more { margin-left: 7em; }
+            footer { margin-top: 80px; }
+        }
+        /* Handy: in der Kurzvita steht das Jahr über dem Eintrag */
+        @media (max-width: 520px) {
+            .cv, .pubs { gap: 18px; }
+            .cv li, .pubs li { grid-template-columns: minmax(0, 1fr); hyphens: auto; -webkit-hyphens: auto; }
+            .cv .key, .pubs .key { font-size: .88em; }
+            .more { margin-left: 0; }
+            .tablist { gap: 6px 16px; flex-wrap: wrap; }
+            .tablist button { font-size: .94em; white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <!-- KOPF — rundes Foto: portrait-rund.jpg (quadratischer Ausschnitt, 480 × 480 px) -->
+        <header class="row head">
+            <img class="avatar" src="portrait-rund.jpg" width="112" height="112" alt="Porträt von Ahmet Bekisoglu">
+            <div>
+                <h1>Ahmet Bekisoglu</h1>
+                <p class="role">Arzt &amp; Global-Health-Forscher</p>
+                <p class="avail"><span class="pulse" aria-hidden="true"></span>Verfügbar für Vorträge &amp; Seminare</p>
+                <nav class="jump" aria-label="Abschnitte"><a href="#themen"><svg class="n-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V17h5v-1.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Themen</a><a href="#formate"><svg class="n-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3M8.5 21h7"/></svg>Formate</a><a href="#projekte"><svg class="n-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Projekte</a><a href="#publikationen"><svg class="n-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>Publikationen</a><a href="#kontakt"><svg class="n-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11A1.5 1.5 0 0 1 4.5 5z"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>Kontakt</a></nav>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="row" aria-labelledby="ueber">
+                <h2 id="ueber">Über mich</h2>
+                <div class="about">
+                    <p>Hey, ich bin Ahmet, Arzt und in Ostfriesland aufgewachsen. Medizin habe ich in Köln studiert, wo ich auch promoviere. Zusätzlich habe ich Global Health Policy an der London School of Hygiene &amp; Tropical Medicine und Peace and Security Studies an der Universität Hamburg studiert. Parallel dazu war ich über acht Jahre Soldat bei der Bundeswehr.</p>
+                    <p>Wissenschaftlich beschäftige ich mich mit globaler Gesundheit, insbesondere mit Resilienz, Gewalt, Trauma und Migration. Dabei arbeite ich unter anderem mit der TU München und der Harvard T.H. Chan School of Public Health zusammen.</p>
+                    <p>2025 war ich deutscher Jugenddelegierter bei der 78.&nbsp;Weltgesundheitsversammlung der WHO in Genf. Derzeit bin ich im Lenkungskreis des Global Health Hub Germany und im Koordinierungskreis des Nachwuchsnetzwerkes Öffentliche Gesundheit. Mein ehrenamtliches Engagement wurde mit mehreren Preisen ausgezeichnet, und ich hatte das Privileg, durch einige Stiftungen gefördert zu werden.</p>
+                </div>
+            </section>
+
+            <section class="row" aria-labelledby="themen">
+                <h2 id="themen">Themen</h2>
+                <!-- THEMEN — unter jedem Thema die Themenfelder als graue Stichwortzeile (je ein <span> pro Stichwort) -->
+                <ul class="topics with-icons">
+                    <li><svg class="t-icon c1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6z"/><path d="M12 8.5v6M9 11.5h6"/></svg><span>Health-Security Nexus
+                        <span class="tags"><span>Pandemien</span> <span>Biosecurity</span> <span>Resilienz</span> <span>Health in Conflict</span></span></span></li>
+                    <li><svg class="t-icon c2" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21V5.5A1.5 1.5 0 0 1 7.5 4h9A1.5 1.5 0 0 1 18 5.5V21"/><path d="M3.5 21h17"/><path d="M12 7.5v5M9.5 10h5"/><path d="M10.5 21v-3.5h3V21"/></svg><span>Resilienz von Gesundheitssystemen
+                        <span class="tags"><span>Versorgung in Kriegen</span> <span>Wiederaufbau</span> <span>Krisenvorsorge</span> <span>Prävention</span> <span>Psychische Kriegsfolgen</span></span></span></li>
+                    <li><svg class="t-icon c3" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span>Globale Gesundheit &amp; Gesundheitspolitik
+                        <span class="tags"><span>WHO</span> <span>Global Health Governance</span> <span>Jugendbeteiligung</span> <span>Deutschland &amp; EU</span></span></span></li>
+                    <li><svg class="t-icon c4" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 5.5C5 4.6 8.5 4.8 12 7c3.5-2.2 7-2.4 9.5-1.5V19c-2.5-.9-6-.7-9.5 1.5C8.5 18.3 5 18.1 2.5 19z"/><path d="M12 7v13.5"/></svg><span>Sozialer Aufstieg, Bildungsgerechtigkeit &amp; Migration
+                        <span class="tags"><span>Nicht-Akademiker-Haushalte</span> <span>Aufstieg durch Bildung</span> <span>Stipendien</span> <span>Mentoring</span> <span>Netzwerke</span></span></span></li>
+                </ul>
+            </section>
+
+            <!-- FORMATE — was man anfragen kann (Texte verdichtet aus der ausführlichen Seite) -->
+            <section class="row" aria-labelledby="formate">
+                <h2 id="formate">Formate</h2>
+                <ul class="list">
+                    <li><span class="key">Vortrag</span><span>Fachvorträge, Panels</span></li>
+                    <li><span class="key">Keynote</span><span>Impulse für Konferenzen, Tagungen, Stiftungen</span></li>
+                    <li><span class="key">Seminar</span><span>Workshops für Hochschulen, Schulen, Organisationen</span></li>
+                    <li><span class="key">Themenfelder</span><span><a href="#themen">siehe oben</a></span></li>
+                    <li><span class="key">Anfrage</span><span><a href="mailto:mail@platzhalter.de?subject=Anfrage%3A%20Vortrag%20%2F%20Seminar">per E-Mail</a>&nbsp;· siehe&nbsp;<a href="#kontakt">Kontaktmöglichkeiten</a></span></li>
+                </ul>
+            </section>
+
+            <!-- PROJEKTE — Texte wie auf der ausführlichen Seite (Website GitHub/index.html) -->
+            <section class="row" aria-labelledby="projekte">
+                <h2 id="projekte">Projekte</h2>
+                <div class="projects">
+                    <article>
+                        <h3><svg class="p-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 3v6a6 6 0 0 0 12 0V3M4 3h4M16 3h4M12 15v2a4 4 0 0 0 8 0v-1"/><circle cx="20" cy="14" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Klinische Tätigkeit &amp; Forschung</h3>
+                        <p>Als Research Assistant im Bereich Global Health an der Technischen Universität München und als Gastwissenschaftler im Department of Psychiatry der Charité – Universitätsmedizin Berlin forsche ich zu Gesundheit in Konflikt- und Krisenkontexten. Parallel schließe ich meine medizinische Promotion an der Universität zu Köln ab (KI-gestützte Analyse des Her2/neu-Status bei Adeno&shy;karzinomen des oberen Gastro&shy;intestinal&shy;trakts). Ab Herbst 2026 kehre ich in die klinische Patientenversorgung im Krankenhaus zurück.</p>
+                    </article>
+                    <article>
+                        <h3><img class="p-icon" src="logos/ktp.png" alt="">Initiative: Krieg Trauma Psyche</h3>
+                        <p>2024 habe ich die ehrenamtliche Initiative <a href="https://kriegtraumapsyche.de" target="_blank" rel="noopener">Krieg&nbsp;Trauma&nbsp;Psyche</a> gegründet. Sie klärt über die psychischen Folgen von Krieg, Flucht und Gewalt auf – für Betroffene, Angehörige und die Öffentlichkeit. Mit Vorträgen, Veranstaltungen und Öffentlichkeitsarbeit bringen wir ein Thema in die Diskussion, das oft im Schatten der sichtbaren Kriegsfolgen bleibt. Die Initiative wurde mit zwei Preisen ausgezeichnet.</p>
+                    </article>
+                    <article>
+                        <h3><svg class="p-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.28 5 12 5 12 5s-6.28 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.72 19 12 19 12 19s6.28 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"/></svg>studyrunner</h3>
+                        <p>Auf meinem YouTube-Kanal <a href="https://youtube.com/studyrunner" target="_blank" rel="noopener">studyrunner</a> teile ich, was mir im Medizinstudium und auf dem Weg in die Forschung geholfen hat: Lernstrategien, der Umgang mit Druck und Stress, und ehrliche Einblicke in meinen eigenen Weg.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- PUBLIKATIONEN — drei Reiter; je Liste erst drei Einträge, Rest über „Weitere anzeigen“.
+                 Ohne JavaScript stehen alle Listen vollständig untereinander. -->
+            <section class="row" aria-labelledby="publikationen">
+                <h2 id="publikationen">Publikationen</h2>
+                <div>
+                    <div class="tablist" role="tablist" aria-label="Publikationen">
+                        <button type="button" role="tab" id="tab-wiss" aria-controls="pub-wiss" aria-selected="true">Wissenschaftlich</button>
+                        <button type="button" role="tab" id="tab-policy" aria-controls="pub-policy" aria-selected="false">Policy &amp; Artikel</button>
+                        <button type="button" role="tab" id="tab-presse" aria-controls="pub-presse" aria-selected="false">Presse</button>
+                    </div>
+                    <div role="tabpanel" id="pub-wiss" aria-labelledby="tab-wiss">
+                        <ul class="list pubs">
+                            <li><span class="key">2025</span><span><a lang="en" href="https://doi.org/10.1007/s00428-025-04048-y" target="_blank" rel="noopener">AI-based tumor-stroma ratio quantification algorithm: comprehensive evaluation of prognostic role in primary colorectal cancer</a><span class="sub">Virchows Archiv · Carvalho&nbsp;R, …, <span class="me">Bekisoglu&nbsp;A</span>, …, Tolkach&nbsp;Y</span></span></li>
+                            <li><span class="key">2024</span><span><a lang="en" href="https://doi.org/10.1186/s12982-024-00198-7" target="_blank" rel="noopener">Psychological impact of the earthquake 2023 in Turkey</a><span class="sub">Discover Public Health · Kizilhan&nbsp;JI, …, <span class="me">Bekisoglu&nbsp;A</span>, Wenzel&nbsp;T</span></span></li>
+                            <li class="group">In Vorbereitung</li>
+                            <li><span class="key">2025</span><span><a lang="en" href="https://doi.org/10.17605/OSF.IO/FM4YJ" target="_blank" rel="noopener">Conflict-Related Sexual Violence (CRSV): A Scoping Review on Psychological Consequences, Collective Trauma and Community-Based Interventions</a><span class="sub">Präregistrierung (OSF) · Bari&nbsp;M, Christl&nbsp;CJ, <span class="me">Bekisoglu&nbsp;A</span>, Schäfer&nbsp;I</span></span></li>
+                            <li><span class="key">2025</span><span><a lang="en" href="https://www.crd.york.ac.uk/PROSPERO/view/CRD420251110763" target="_blank" rel="noopener">Impact of Women’s Economic Empowerment Interventions on Violence Against Children in LMICs: A Systematic Review and Meta-Analysis</a><span class="sub">Protokoll (PROSPERO) · Shukla&nbsp;S, Ramaiya&nbsp;A, Nevatia&nbsp;T, <span class="me">Bekisoglu&nbsp;A</span></span></span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="pub-policy" aria-labelledby="tab-policy">
+                        <ul class="list pubs">
+                            <li><span class="key">2026</span><span><a lang="en" href="https://www.perspectivesmcgill.com/allposts/2026/5/27/from-public-health-to-national-security-reframing-health-resilience-in-germany" target="_blank" rel="noopener">From public health to national security: reframing health resilience in Germany</a><span class="sub">McGill Perspectives on Global Health</span></span></li>
+                            <li><span class="key">2025</span><span><a lang="en" href="https://www.globalhealthhub.de/de/news/detail/policy-brief-by-the-german-youth-delegate-to-the-78th-world-health-assembly" target="_blank" rel="noopener">Policy brief by the German youth delegate to the 78th World Health Assembly</a><span class="sub">Global Health Hub Germany</span></span></li>
+                            <li><span class="key">2025</span><span><a lang="en" href="https://www.thinkglobalhealth.org/article/rebuilding-syrias-health-system-will-kurdish-progress-remain" target="_blank" rel="noopener">Rebuilding Syria’s Health System: Will Kurdish Progress Remain?</a><span class="sub">Think Global Health · mit Ahmad&nbsp;G, Bozkurt&nbsp;D</span></span></li>
+                            <li><span class="key">2025</span><span><a lang="en" href="https://doi.org/10.13140/RG.2.2.30562.39369" target="_blank" rel="noopener">Strengthening Global Health in Conflict Settings: Strategic Insights for Germany and the European Union</a><span class="sub">Policy Brief, Global Health Hub Germany / GIZ · mit Bhaskar&nbsp;S, Grigoryan&nbsp;A u.&nbsp;a.</span></span></li>
+                            <li><span class="key">2025</span><span><a href="https://www.globalhealthhub.de/de/news/detail/gesundheit-interdisziplinaer-gedacht-politisch-erlebt-ein-bericht-von-der-wha-aus-genf" target="_blank" rel="noopener">Gesundheit interdisziplinär gedacht – politisch erlebt: Ein Bericht von der WHA aus Genf</a><span class="sub">Global Health Hub Germany</span></span></li>
+                            <li><span class="key">2024</span><span><a lang="en" href="https://www.thinkglobalhealth.org/article/womens-medical-education-rojava" target="_blank" rel="noopener">Women’s medical education in Rojava</a><span class="sub">Think Global Health · mit Ahmad&nbsp;G</span></span></li>
+                            <li><span class="key">2024</span><span><a lang="en" href="https://polis180.org/polisblog/2024/08/21/hope-and-resistance-rojavas-pursuit-of-healthcare-and-gender-equality-in-a-war-torn-region" target="_blank" rel="noopener">Hope and resistance: Rojava’s pursuit of healthcare and gender equality in a war-torn region</a><span class="sub">Polis180 · mit Ahmad&nbsp;G</span></span></li>
+                            <li><span class="key">2024</span><span><a lang="en" href="https://www.thinkglobalhealth.org/article/kurdish-resilience-face-turmoil" target="_blank" rel="noopener">Kurdish resilience in the face of turmoil</a><span class="sub">Think Global Health</span></span></li>
+                            <li><span class="key">2023</span><span><a href="https://polis180.org/polisblog/2023/07/13/eine-reform-in-die-falsche-richtung-was-das-neue-gemeinsame-europaeische-asylsystem-geas-bedeuten-koennte/" target="_blank" rel="noopener">Eine Reform in die falsche Richtung? Was das neue Gemeinsame Europäische Asylsystem (GEAS) bedeuten könnte</a><span class="sub">Polis180 · mit Rau&nbsp;L</span></span></li>
+                            <li><span class="key">2023</span><span><a href="https://polis180.org/polisblog/2023/05/03/zurueck-richtung-zukunft-die-tuerkische-aussenpolitik-vor-einem-umbruch" target="_blank" rel="noopener">Zurück Richtung Zukunft? Die türkische Außenpolitik vor einem Umbruch</a><span class="sub">Polis180 · mit Fedzin&nbsp;M</span></span></li>
+                        </ul>
+                    </div>
+                    <div role="tabpanel" id="pub-presse" aria-labelledby="tab-presse">
+                        <ul class="list pubs">
+                            <li><span class="key">24.09.2026</span><span><a href="https://www.linkedin.com/posts/globalhealthhubgermany_globalhealth-globalhealthleadership-germany-activity-7508839560898850817-mW2z" target="_blank" rel="noopener">Deutschlands Rolle in der globalen Gesundheit – Perspektiven aus dem Lenkungskreis</a><span class="sub">Global Health Hub Germany · LinkedIn-Beitrag</span></span></li>
+                            <li><span class="key">01.07.2026</span><span><a href="https://www.globalhealthhub.de/de/news/detail/sie-haben-gewaehlt-das-ist-unser-neuer-lenkungskreis-2026-bis-2028" target="_blank" rel="noopener">Sie haben gewählt: Das ist unser neuer Lenkungskreis 2026 bis 2028</a><span class="sub">Global Health Hub Germany · Meldung</span></span></li>
+                            <li><span class="key">17.12.2025</span><span><a href="https://dgvn.de/meldung/drei-projekte-erhalten-den-dgvn-jugendfriedenspreis-in-goettingen" target="_blank" rel="noopener">Drei Projekte erhalten den DGVN-Jugendfriedenspreis in Göttingen</a><span class="sub">Deutsche Gesellschaft für die Vereinten Nationen · Meldung</span></span></li>
+                            <li><span class="key">11.07.2025</span><span><a href="https://www.aerzteblatt.de/archiv/weltgesundheitsversammlung-vom-examen-nach-genf-638cea8d-8a1c-4d5e-bb09-4b615435ff3d" target="_blank" rel="noopener">Weltgesundheitsversammlung: Vom Examen nach Genf</a><span class="sub">Deutsches Ärzteblatt · Bericht</span></span></li>
+                            <li><span class="key">01.06.2025</span><span><a href="https://www.spiegel.de/psychologie/mehrsprachigkeit-bei-kindern-was-meine-muttersprache-fuer-mich-und-meine-identitaet-bedeutet-a-76d5180a-edca-4620-a374-86317e39b42f" target="_blank" rel="noopener">Mehrsprachigkeit bei Kindern: Was meine Muttersprache für mich und meine Identität bedeutet</a><span class="sub">Der Spiegel · Interview</span></span></li>
+                            <li><span class="key">07.02.2025</span><span><a href="https://www.aerzteblatt.de/archiv/eine-tasse-kaffee-mit-ahmet-bekisoglu-87c36a15-0fb1-4f11-ac4e-577f7ff42a5c" target="_blank" rel="noopener">Eine Tasse Kaffee mit … Ahmet Bekişoğlu</a><span class="sub">Deutsches Ärzteblatt · Porträt</span></span></li>
+                            <li><span class="key">26.01.2025</span><span><a href="https://www.oz-online.de/artikel/1536230/Moormerlaender-spricht-fuer-Deutschlands-Jugend" target="_blank" rel="noopener">Amt im Ministerium: Moormerländer spricht für Deutschlands Jugend</a><span class="sub">Ostfriesen-Zeitung · Bericht</span></span></li>
+                            <li><span class="key">22.02.2024</span><span><a href="https://www.tagesspiegel.de/gesellschaft/eine-sprache-ohne-land-nein-kurdisch-ist-kein-turkischer-dialekt-11247994.html" target="_blank" rel="noopener">Eine Sprache ohne Land: Nein, Kurdisch ist kein türkischer Dialekt!</a><span class="sub">Der Tagesspiegel · Interview</span></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- KURZVITA — vorerst nur Ausbildung; Stand: CV vom 16.09.2026 -->
+            <section class="row" aria-labelledby="vita">
+                <h2 id="vita">Kurzvita</h2>
+                <ul class="list cv">
+                    <li><span class="key">2025 – 2026</span><span>M.A. Peace and Security Studies<span class="sub">Universität Hamburg</span></span></li>
+                    <li><span class="key">2024 – 2026</span><span>M.Sc. Global Health Policy<span class="sub">London School of Hygiene &amp; Tropical Medicine</span></span></li>
+                    <li><span class="key">seit 2022</span><span>Promotion zum Dr. med.<span class="sub">Universität zu Köln</span></span></li>
+                    <li><span class="key">2019 – 2025</span><span>Studium der Humanmedizin<span class="sub">Universität zu Köln · Approbation 2025</span></span></li>
+                </ul>
+            </section>
+
+            <!-- NETZWERKE & FÖRDERER — dieselben Logos wie auf der ausführlichen Seite (Ordner logos/) -->
+            <section class="row" aria-labelledby="netzwerke">
+                <h2 id="netzwerke">Netzwerke &amp; Förderer</h2>
+                <div class="logos">
+                    <!-- GENERATION EUROPA hat kein eigenes Logo, daher das DFJW-Logo -->
+                    <a href="https://www.dfjw.org/programme-aus-und-fortbildungen/generation-europa" target="_blank" rel="noopener" title="Generation Europa (DFJW)"><img class="sq" src="logos/dfjw.svg" alt="Deutsch-Französisches Jugendwerk (DFJW), Generation Europa" loading="lazy"></a>
+                    <a href="https://www.hss.de" target="_blank" rel="noopener" title="Hanns-Seidel-Stiftung"><img src="logos/hss.svg" alt="Hanns-Seidel-Stiftung" loading="lazy"></a>
+                    <!-- YOUNG KÖNIGSWINTER CONFERENCE der Deutsch-Britischen Gesellschaft: DBG-Logo mit Konferenznamen darunter -->
+                    <a class="captioned" href="https://ykw.debrige.de" target="_blank" rel="noopener" title="Young Königswinter Conference (Deutsch-Britische Gesellschaft)"><img class="tall" src="logos/dbg.jpg" alt="Deutsch-Britische Gesellschaft" loading="lazy"><small class="strong">Young Königswinter<br>Conference</small></a>
+                    <a href="https://toenissteiner-studierendenforum.de" target="_blank" rel="noopener" title="Studierendenforum im Tönissteiner Kreis"><img src="logos/studierendenforum.svg" alt="Studierendenforum im Tönissteiner Kreis e.V." loading="lazy"></a>
+                    <a class="captioned" href="https://bdas.de" target="_blank" rel="noopener" title="Bund der Alevitischen Studierenden"><img class="sq" src="logos/bdas.png" alt="" loading="lazy"><small>Bund der Alevitischen<br>Studierenden (BDAS)</small></a>
+                    <a href="https://www.deutschlandstiftung.net" target="_blank" rel="noopener" title="Deutschlandstiftung Integration"><img class="sq" src="logos/deutschlandstiftung-kreise.svg" alt="Deutschlandstiftung Integration" loading="lazy"></a>
+                    <a href="https://allianzfoundation.org" target="_blank" rel="noopener" title="Allianz Foundation"><img src="logos/allianz-foundation.svg" alt="Allianz Foundation" loading="lazy"></a>
+                    <a href="https://www.globalhealthhub.de" target="_blank" rel="noopener" title="Global Health Hub Germany"><img class="sq" src="logos/ghhg.svg" alt="Global Health Hub Germany" loading="lazy"></a>
+                    <a href="https://www.be-boosted.org/" target="_blank" rel="noopener" title="be.boosted Fellowship"><img class="tall" src="logos/be-boosted.png" alt="be.boosted – Shaping Future Global Leaders" loading="lazy"></a>
+                    <!-- BLUEDOT IMPACT: sehr breiter Schriftzug, daher über zwei Kacheln; Kursname darunter -->
+                    <a class="captioned span2" href="https://bluedot.org/courses/biosecurity" target="_blank" rel="noopener" title="BlueDot Impact – Biosecurity"><img class="wide" src="logos/bluedot.svg" alt="BlueDot Impact" loading="lazy"><small class="strong">Biosecurity</small></a>
+                </div>
+            </section>
+
+            <!-- KONTAKT — E-MAIL: "mail@platzhalter.de" durch die echte Adresse ersetzen (auch bei „Formate“ und oben im JSON-LD) -->
+            <section class="row" aria-labelledby="kontakt">
+                <h2 id="kontakt">Kontakt</h2>
+                <ul class="list">
+                    <li><span class="key">E-Mail</span><span><a href="mailto:mail@platzhalter.de">mail@platzhalter.de</a></span></li>
+                    <!-- cal.com: öffnet die Buchung als Overlay, ohne JS einfach als Link -->
+                    <li><span class="key">Termin</span><span class="links"><a class="cal" href="https://cal.com/ahmetbekisoglu" data-cal><svg class="cal-logo" viewBox="0 9.3 24 5.4" aria-hidden="true"><path fill="currentColor" d="M2.408 14.488C1.035 14.488 0 13.4 0 12.058c0-1.346.982-2.443 2.408-2.443.758 0 1.282.233 1.691.765l-.66.55a1.343 1.343 0 0 0-1.03-.442c-.93 0-1.44.711-1.44 1.57 0 .86.559 1.557 1.44 1.557.413 0 .765-.147 1.043-.443l.651.573c-.391.51-.929.743-1.695.743zM6.948 10.913h.89v3.49h-.89v-.51c-.185.362-.493.604-1.083.604-.943 0-1.695-.82-1.695-1.826 0-1.007.752-1.825 1.695-1.825.585 0 .898.241 1.083.604zm.026 1.758c0-.546-.374-.998-.964-.998-.568 0-.938.457-.938.998 0 .528.37.998.938.998.586 0 .964-.456.964-.998zM8.467 9.503h.89v4.895h-.89zM9.752 13.937a.53.53 0 0 1 .542-.528c.313 0 .533.242.533.528a.527.527 0 0 1-.533.537.534.534 0 0 1-.542-.537zM14.23 13.839c-.33.403-.832.658-1.426.658a1.806 1.806 0 0 1-1.84-1.826c0-1.007.778-1.825 1.84-1.825.572 0 1.07.241 1.4.622l-.687.577c-.172-.215-.396-.376-.713-.376-.568 0-.938.456-.938.998 0 .541.37.997.938.997.343 0 .58-.179.757-.42zM14.305 12.671c0-1.007.78-1.825 1.84-1.825 1.061 0 1.84.818 1.84 1.825 0 1.007-.779 1.826-1.84 1.826-1.06-.005-1.84-.82-1.84-1.826zm2.778 0c0-.546-.37-.998-.938-.998-.568-.004-.937.452-.937.998 0 .542.37.998.937.998.568 0 .938-.456.938-.998zM24 12.269v2.13h-.89v-1.911c0-.604-.281-.864-.704-.864-.396 0-.678.197-.678.864v1.91h-.89v-1.91c0-.604-.285-.864-.704-.864-.396 0-.744.197-.744.864v1.91h-.89v-3.49h.89v.484c.185-.376.52-.564 1.035-.564.489 0 .898.241 1.123.649.224-.417.554-.65 1.153-.65.731.005 1.299.56 1.299 1.442z"/></svg>Gespräch&nbsp;vereinbaren</a></span></li>
+                    <li><span class="key">Online</span>
+                        <span class="links">
+                            <a href="https://www.linkedin.com/in/ahmet-bekisoglu-319627246/" target="_blank" rel="noopener"><svg class="s-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a>
+                            <a href="https://scholar.google.com/citations?user=H_onjfkAAAAJ&amp;hl=de" target="_blank" rel="noopener"><svg class="s-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 9l4 2.55V17c0 2.2 3.13 4 7 4s7-1.8 7-4v-5.45L23 9 12 2Zm0 2.37L19.3 9 12 13.63 4.7 9 12 4.37ZM7 12.82l5 3.18 5-3.18V17c0 .88-1.95 2-5 2s-5-1.12-5-2v-4.18Z"/></svg>Google Scholar</a>
+                            <a href="https://youtube.com/studyrunner" target="_blank" rel="noopener"><svg class="s-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.28 5 12 5 12 5s-6.28 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.72 19 12 19 12 19s6.28 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"/></svg>YouTube</a>
+                        </span>
+                    </li>
+                </ul>
+            </section>
+
+        </main>
+
+        <!-- FOOTER: Impressum & Datenschutz sind für eine geschäftsmäßige Website Pflicht -->
+        <footer>
+            <span>© 2026 Ahmet Bekisoglu</span>
+            <nav aria-label="Rechtliches"><a href="impressum.html" rel="nofollow">Impressum</a><a href="datenschutz.html">Datenschutz</a></nav>
+        </footer>
+
+    </div>
+
+    <!-- cal.com Embed: wird erst beim Klick auf „Gespräch vereinbaren“ geladen (kein Kontakt zu cal.com beim bloßen Seitenaufruf) -->
+    <script type="text/javascript">
+      (function () {
+        var loaded = false;
+        function boot() {
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", "termin", { origin: "https://cal.com" });
+          Cal.ns.termin("ui", { styles: { branding: { brandColor: "#111111" } }, hideEventTypeDetails: false, layout: "month_view" });
+        }
+        document.querySelectorAll("[data-cal]").forEach(function (el) {
+          el.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (!loaded) { loaded = true; boot(); }
+            Cal.ns.termin("modal", { calLink: "ahmetbekisoglu", config: { layout: "month_view" } });
+          });
+        });
+      })();
+    </script>
+
+    <!-- Reiter bei den Publikationen: Klick oder Pfeiltasten wechseln die Liste -->
+    <script type="text/javascript">
+      (function () {
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+        if (!tabs.length) return;
+        function select(t) {
+          tabs.forEach(function (x) {
+            var on = x === t;
+            x.setAttribute('aria-selected', on ? 'true' : 'false');
+            x.tabIndex = on ? 0 : -1;
+            document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+          });
+        }
+        tabs.forEach(function (t, i) {
+          t.addEventListener('click', function () { select(t); });
+          t.addEventListener('keydown', function (e) {
+            var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+            if (!d) return;
+            var n = tabs[(i + d + tabs.length) % tabs.length];
+            n.focus(); select(n);
+          });
+        });
+        select(tabs[0]);
+
+        // je Liste nur die ersten drei Einträge zeigen, Rest per Knopf
+        document.querySelectorAll('ul.pubs').forEach(function (ul) {
+          var entries = Array.prototype.filter.call(ul.children, function (li) { return !li.classList.contains('group'); });
+          if (entries.length <= 3) return;
+          var extra = entries.slice(3);
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'more';
+          function set(open) {
+            extra.forEach(function (li) { li.hidden = !open; });
+            ul.querySelectorAll('li.group').forEach(function (g) { var n = g.nextElementSibling; g.hidden = !!(n && n.hidden); });
+            btn.textContent = open ? 'Weniger anzeigen' : 'Weitere anzeigen';
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          }
+          btn.addEventListener('click', function () { set(btn.getAttribute('aria-expanded') !== 'true'); });
+          ul.insertAdjacentElement('afterend', btn);
+          set(false);
+        });
+      })();
+    </script>
+
+    <!-- Symbole der Sprunglinks zeichnen sich beim Laden, Themen-Symbole beim ersten Hineinscrollen (nur mit JavaScript und ohne „Bewegung reduzieren“) -->
+    <script type="text/javascript">
+      (function () {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (!('IntersectionObserver' in window)) return;
+        // zeichnet alle Linien der Symbole in `box` nacheinander, sobald `box` sichtbar wird
+        function draw(box, iconSel, dur, step) {
+          if (!box) return;
+          var shapes = [];
+          box.querySelectorAll(iconSel).forEach(function (svg, i) {
+            svg.querySelectorAll('path, circle').forEach(function (el) {
+              var len = Math.ceil(el.getTotalLength()) + 1;
+              el.style.strokeDasharray = len + ' ' + len;
+              el.style.strokeDashoffset = len;
+              el.style.transition = 'stroke-dashoffset ' + dur + 's ease-in-out ' + (i * step).toFixed(2) + 's';
+              shapes.push(el);
+            });
+          });
+          var io = new IntersectionObserver(function (entries) {
+            if (!entries.some(function (e) { return e.isIntersecting; })) return;
+            io.disconnect();
+            requestAnimationFrame(function () { requestAnimationFrame(function () {
+              shapes.forEach(function (el) { el.style.strokeDashoffset = 0; });
+            }); });
+          }, { threshold: 0.35 });
+          io.observe(box);
+        }
+        draw(document.querySelector('.jump'), '.n-icon', 0.9, 0.15);
+        draw(document.querySelector('.topics.with-icons'), '.t-icon', 1.3, 0.2);
+      })();
+    </script>
+
+</body>
+</html>
